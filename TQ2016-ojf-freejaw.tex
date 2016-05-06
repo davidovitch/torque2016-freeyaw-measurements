@@ -1,0 +1,162 @@
+\documentclass[a4paper]{jpconf}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[hyphens]{url}
+
+%\usepackage{citesort}
+%\usepackage[square,sort&compress,numbers]{natbib}
+
+%\bibliographystyle{plainnat}
+%\bibliographystyle{vancouver}
+%\bibliographystyle{natbib}
+%\bibliographystyle{plainnat}
+%\bibliographystyle{apasoft}
+
+\bibliographystyle{iopart-num}
+%\bibliographystyle{amsplain}
+%\bibliographystyle{unsrt}
+
+%\usepackage[backend=biber, style=numeric, citestyle=authortitle]{biblatex}
+%\addbibresource{bibliography-iopart-num}
+
+\begin{document}
+\title{Open Access Wind Tunnel Measurements of a Downwind Free Yawing Wind Turbine}
+
+\author{\textsuperscript{1} David Verelst, \textsuperscript{1} Torben Larsen and \textsuperscript{2} Jan-Willem van Wingerden}
+
+\address{\textsuperscript{1} DTU Wind Energy - Loads and Control, \textsuperscript{2} TU Delft - Delft Center for Systems and Control}
+	%\address{Loads And Control, DTU Wind Energy, Frederiksborgvej 399, 4000 Roskilde, Denmark}
+
+\ead{dave@dtu.dk}
+
+% max 200 words (approx)
+\begin{abstract}
+A series of free yawing wind tunnel experiments was held in the Open Jet Facility (OJF) of the TU Delft. The turbine has three blades in a downwind configuration and is optionally free to yaw. Three different blade flexibility configurations are tested, and one configuration also includes blade sweep and rotor coning. This paper gives a brief overview of the measurement setup and challenges, and continues with presenting some key results. This wind tunnel campaign has shown that a three bladed downwind wind turbine can indeed operate in a stable fashion under a minimal yaw error, and that both blade sweep and rotor coning have a positive impact on free yaw stability. Finally, a description of how to obtain this open access dataset, including the post-processing scripts, is given.
+\end{abstract}
+
+
+\section{Introduction}
+
+The wind tunnel measurements that are discussed here were completed within the context of a PhD research project \cite{verelst_numerical_2013:diss}, and some of the prelimenary results have been discussed earlier in comparison with aeroelastic simulations \cite{verelst_wind_2014}. This paper will focus on the measurements and its shortcomings, and presents the main results and conclusions, including results that have not been considered earlier. Additionally, all the measurement data is now also made available as an open access dataset and this paper should serve as a formal, peer-reviewed reference for these measurements. The open access dataset includes both raw and corrected/calibrated data. Finally, the scripts that have been used for the correction and calibration procedures are provided. In doing so, other researchers can review the entire cycle from raw measurement to coherent and calibrated data.
+
+A short and incomplete list of other yawed inflow related experiments and measurements will be briefly discussed in the full paper. Although extensive measurement campaigns have been undertaken previously regarding yawed inflow conditions, to the author knowledges there are no other existing experiments that have studied the yaw stability of three bladed downwind free yawing wind turbines.
+
+Free yawing downwind wind turbines are not a new concept. Currently they are used only on either very small wind turbines (W-kW range) or small to medium sized machines (50-100 kW range). To the authors knowledge, there are no MW machines in operation today utilizing the downwind free yawing concept. Large wind turbines require an active yawing mechanism (required for periodic cable unwinding), however, a free yawing turbine could potentially reduce the yaw drive torque requirements and minimize its wear and maintenance. 
+
+An alternative application of a good understanding of wind turbine perforamce and loading under yawed inflow ccould be to help predict more precisely the wind direction \cite{bottasso_validation_2015}. Considering this is often problematic when using only aerodynamic devices placed on the nacelle, a reliable method to determine the yaw error based on turbine loading and/or performance can be valuable.
+
+
+\section{Measurement Setup and Limitations}
+
+A short description of the experimental setup will be given in the full paper, with a focus on the available sensors and the limitations on accuracy of the collected data. Further, this section will list some valuable lessons learned from running a wind tunnel campaign on a small budget and team.
+
+%Can we derive indicative rotor torque or power values based on the voltage/current measurements and the tower side-side bending moment?
+
+
+%\begin{table}[h]
+%\caption{\label{sensors} Sensor overview and indicative sensor accuracy and reliability, for the February and April campaigns.}
+%\begin{center}
+%\begin{tabular}{lll}
+%\br
+%Sensor & February & April \\
+%\mr
+%Rotor speed &  & \\
+%Rotor Azimuth & & \\
+%
+%\br
+%\end{tabular}
+%\end{center}
+%\end{table}
+
+\section{Measurement Results}
+
+Due to the absence of accurate torque and yaw moment measurements, the influence of yawed inflow conditions has to be considered by looking at proxies. The tower base for-aft bending moment is a reliable measurement that can be used to look at the effect of misaligned flow on the rotor thrust. The rotor speed can serve as a proxy for the torque since the generator used is a direct drive permanent magnet generator without any active control, and has a near linear relationship between torque and rotor speed (\cite{verelst_numerical_2013:diss}, page 100).
+
+An overall overview of the test cases can be obtained by considering figures \ref{ct-vs-lambda} and \ref{ct-vs-yawerror}. From figure \ref{ct-vs-lambda} the two operating modes of the turbine can be shown: low tip speed ratio's when the rotor is operating in deep stall, and higher tip speed ratio's (around the design point) in attached flow regimes. The influence of yaw inflow angle on the rotor thrust is given for different tip speed ratio's in figure \ref{ct-vs-yawerror}, and confirms the $cos^2 \psi$ (with $\psi$ being the yaw error) relationship between thrust and yaw angle that has been reported in other experiments.
+
+\begin{figure}[h]
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/symlinks_all_psicor-ct-vs-lambda-april.eps}
+\caption{\label{ct-vs-lambda}Thrust coefficients as function of tip speed ratio in aligned flow for various wind speeds.}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/symlinks_all_psicor-yawerror-vs-ct-april.eps}
+\caption{\label{ct-vs-yawerror} Thrust coefficients in yawed flow. Lines are proportional to $cos^2 \psi$}
+\end{minipage} 
+\end{figure}
+
+The full paper will extend the analysis by considering rotor speed as a proxy for rotor torque in both aligned and misaligned flow.
+
+%Alternatively, when only considering wind and rotor speeds we can also include the measurements for which no reliable tower base bending moments are available:
+
+%\begin{figure}[h]
+%\begin{minipage}{17pc}
+%\includegraphics[width=17pc]{figures/symlinks_all_psicor-rpm-vs-wind-dc0-dc1.eps}
+%\caption{\label{rpm-vs-wind-dc0-cd1}Figure caption for first of two sided figures.}
+%\end{minipage}\hspace{2pc}%
+%\begin{minipage}{17pc}
+%\includegraphics[width=17pc]{figures/symlinks_all_psicor-rpm-vs-wind-dc-all.eps}
+%\caption{\label{rpm-vs-wind-dcall}Figure caption for second of two sided figures.}
+%\end{minipage} 
+%\end{figure}
+
+
+For the free yawing tests, the turbine was forced into a yaw error and released again after reaching steady rotor speed conditions. An example of such a result is given in figure \ref{freeyaw-flex-vs-samo}: the rotor speed and yaw inflow angle are given for two different blade planform layouts: straight and swept (but with the same pitch, chord and airfoil distributions). The full paper will include the results of more free yaw decay tests and corresponding analysis.
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=25pc]{figures/freeyaw/277-vs-330-9ms-rpm.eps}
+%\caption{\label{freeyaw-flex}Comparison .}
+\end{minipage}
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=25pc]{figures/freeyaw/277-vs-330-9ms-yaw.eps}
+\caption{\label{freeyaw-flex-vs-samo} Comparison of the free yaw response a straight and flexible blade at 9 m/s.}
+\end{minipage} 
+\end{figure}
+
+
+\section{Open Access Measurement Data}
+
+The main access point to this dataset is placed in a git version control repository on the Github hosting platform (free of charge for publicly accessible repositories). This repository \cite{github:freeyaw-ojf-wt-tests} contains the documentation and all the Python post-processing scripts that have been used to calibrate and correct the raw measurement data into a usable coherent dataset.
+
+The measurement data itself is too large for it to be practically integrated in a git repository on Github. Instead, the Danish e-infrastructure cooperation (DeiC) \cite{deic:datamanagement} is used to host the approximate 14 GB dataset. Alternative hosting platforms for large research datasets are Zenodo \cite{zenodo} and OSF.io \cite{osf}. 
+
+Making datasets like this publicly available including documentation and instructions to reproduce (parts) of the analysis is not often considered due to various reasons. It is a significant additional effort to sanitize the data and post-processing scripts in order to make it publicly available. This is necessary though if the data is mend to be useful for other users or researchers. %Considering that creating and post-processing experimental datasets like these represent a considerable effort, it is worthwhile to also share the data with as many other researchers as possible.
+
+%Since creating and post-processing experimental data is 
+%\section{Conclusions}
+
+\section*{References}
+
+\begingroup
+\raggedright
+%\bibliographystyle{iopart-num}
+\bibliography{bibliography-iopart-num}
+
+%\printbibliography
+
+%\begin{thebibliography}{9}
+%
+%\bibitem{Erdos01} P. Erd\H os, \emph{A selection of problems and
+%results in combinatorics}, Recent trends in combinatorics (Matrahaza,
+%1995), Cambridge Univ. Press, Cambridge, 2001, pp. 1--6.
+%
+%\bibitem{ConcreteMath}
+%R.L. Graham, D.E. Knuth, and O. Patashnik, \emph{Concrete
+%mathematics}, Addison-Wesley, Reading, MA, 1989.
+%
+%\bibitem{Knuth92} D.E. Knuth, \emph{Two notes on notation}, Amer.
+%Math. Monthly \textbf{99} (1992), 403--422.
+%
+%\bibitem{Simpson} H. Simpson, \emph{Proof of the Riemann
+%Hypothesis},  preprint (2003), available at 
+%\url{http://www.math.drofnats.edu/riemann.ps}.
+%
+%\end{thebibliography}
+
+\endgroup
+
+\end{document}
