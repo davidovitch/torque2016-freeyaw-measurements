@@ -30,78 +30,171 @@
 \ead{dave@dtu.dk}
 
 % max 200 words (approx)
+
+%TODO either remove or add to proof the following:
+% and that both blade sweep and rotor coning have a positive impact on free yaw stability
+
 \begin{abstract}
-A series of free yawing wind tunnel experiments was held in the Open Jet Facility (OJF) of the TU Delft. The turbine has three blades in a downwind configuration and is optionally free to yaw. Three different blade flexibility configurations are tested, and one configuration also includes blade sweep and rotor coning. This paper gives a brief overview of the measurement setup and challenges, and continues with presenting some key results. This wind tunnel campaign has shown that a three bladed downwind wind turbine can indeed operate in a stable fashion under a minimal yaw error, and that both blade sweep and rotor coning have a positive impact on free yaw stability. Finally, a description of how to obtain this open access dataset, including the post-processing scripts, is given.
+A series of free yawing wind tunnel experiments was held in the Open Jet Facility (OJF) of the TU Delft. The turbine has three blades in a downwind configuration and is optionally free to yaw. Different rotor configurations are tested, such as blade flexibility and sweep. This paper gives a brief overview of the measurement setup and challenges, and continues with presenting some key results. This wind tunnel campaign has shown that a three bladed downwind wind turbine can operate in a stable fashion under a minimal yaw error. Finally, a description of how to obtain this open access dataset, including the post-processing scripts and procedures, is made available via a publicly accessible website.
 \end{abstract}
 
 
+% =================================================================================
 \section{Introduction}
 
-The wind tunnel measurements that are discussed here were completed within the context of a PhD research project \cite{verelst_numerical_2013:diss}, and some of the prelimenary results have been discussed earlier in comparison with aeroelastic simulations \cite{verelst_wind_2014}. This paper will focus on the measurements and its shortcomings, and presents the main results and conclusions, including results that have not been considered earlier. Additionally, all the measurement data is now also made available as an open access dataset and this paper should serve as a formal, peer-reviewed reference for these measurements. The open access dataset includes both raw and corrected/calibrated data. Finally, the scripts that have been used for the correction and calibration procedures are provided. In doing so, other researchers can review the entire cycle from raw measurement to coherent and calibrated data.
+The wind tunnel measurements that are discussed here were completed within the context of a PhD research project \cite{verelst_numerical_2013:diss}, and some of the prelimenary results have been discussed earlier in comparison with aeroelastic simulations \cite{verelst_wind_2014}. This paper will focus on the measurements and its shortcomings, and presents the main results and conclusions, including results that have not been considered earlier. Additionally, all the measurement data is now also made available as an open access dataset and this paper should serve as a formal, peer-reviewed reference for these measurements. The open access dataset includes both raw and corrected/calibrated data. Finally, the scripts that have been used for the correction and calibration procedures are provided. In doing so, other researchers can review the entire cycle from raw measurement to coherent and calibrated data set.
 
-A short and incomplete list of other yawed inflow related experiments and measurements will be briefly discussed in the full paper. Although extensive measurement campaigns have been undertaken previously regarding yawed inflow conditions, to the author knowledges there are no other existing experiments that have studied the yaw stability of three bladed downwind free yawing wind turbines.
+%TODO literature review
+% ---------------------FROM ABSTRACT
+%A short and incomplete list of other yawed inflow related experiments and measurements will be briefly discussed in the full paper. Although extensive measurement campaigns have been undertaken previously regarding yawed inflow conditions, to the author knowledges there are no other existing experiments that have studied the yaw stability of three bladed downwind free yawing wind turbines.
+% ----------------------------------
 
-Free yawing downwind wind turbines are not a new concept. Currently they are used only on either very small wind turbines (W-kW range) or small to medium sized machines (50-100 kW range). To the authors knowledge, there are no MW machines in operation today utilizing the downwind free yawing concept. Large wind turbines require an active yawing mechanism (required for periodic cable unwinding), however, a free yawing turbine could potentially reduce the yaw drive torque requirements and minimize its wear and maintenance. 
-
-An alternative application of a good understanding of wind turbine perforamce and loading under yawed inflow ccould be to help predict more precisely the wind direction \cite{bottasso_validation_2015}. Considering this is often problematic when using only aerodynamic devices placed on the nacelle, a reliable method to determine the yaw error based on turbine loading and/or performance can be valuable.
-
-
-\section{Measurement Setup and Limitations}
-
-A short description of the experimental setup will be given in the full paper, with a focus on the available sensors and the limitations on accuracy of the collected data. Further, this section will list some valuable lessons learned from running a wind tunnel campaign on a small budget and team.
-
-%Can we derive indicative rotor torque or power values based on the voltage/current measurements and the tower side-side bending moment?
+Previous rotating wind tunnel experiments with at least a partial focus on yawed inflow conditions have been discussed in for example: \cite{haans_measurement_2005}, \cite{haans_measurement_2005-1}, \cite{bracchi_downwind_2014}, \cite{schepers_engineering_2012}, \cite{schepers_final_2012}, \cite{mexnext_iea_web}, \cite{schepers_model_2007}, \cite{hand_unsteady_2001}, \cite{loland_wind_2011}, \cite{haans_wind_2011}. Although \cite{bracchi_downwind_2014} considers a downwind rotor design, it does not explore the free yawing concept. These are an extensive set of measurement campaigns regarding yawed inflow conditions. However, to the author knowledges there are no other existing experiments that have studied the yaw stability of three bladed downwind free yawing wind turbine.
 
 
-%\begin{table}[h]
-%\caption{\label{sensors} Sensor overview and indicative sensor accuracy and reliability, for the February and April campaigns.}
-%\begin{center}
-%\begin{tabular}{lll}
-%\br
-%Sensor & February & April \\
-%\mr
-%Rotor speed &  & \\
-%Rotor Azimuth & & \\
-%
-%\br
-%\end{tabular}
-%\end{center}
-%\end{table}
+Free yawing downwind wind turbines are not a new concept. Currently they are used only on either very small wind turbines (W-kW range) or small to medium sized machines (50-100 kW range). To the authors knowledge, there are no MW machines in operation today utilizing the downwind free yawing concept. Large wind turbines require an active yawing mechanism (required for periodic cable unwinding), however, a free yawing turbine could potentially reduce the yaw drive torque requirements and minimize its wear and maintenance.
 
+An alternative application of a good understanding of wind turbine performance and loading under yawed inflow could be to help predict more precisely the wind direction \cite{bottasso_validation_2015}. Considering this is often problematic when using only aerodynamic devices placed on the nacelle, a reliable method to determine the yaw error based on turbine loading and/or performance can be valuable.
+
+
+% =================================================================================
+\section{Experimental Setup and Limitations}
+
+% ------------ FROM THE ABSTRACT
+%A short description of the experimental setup will be given in the full paper, with a focus on the available sensors and the limitations on accuracy of the collected data. Further, this section will list some valuable lessons learned from running a wind tunnel campaign on a small budget and team.
+% ------------------------------
+
+The experiment consisted out of two campaigns: the first during February of 2012, and the second two months later in April 2012. A comprehensive discussion of the design of the experimental setup and measurement sensors are given in sections 4.4, 4.5 and 5.2 of \cite{verelst_numerical_2013:diss}. What follows is a brief overview:
+
+\begin{itemize}
+	\item The tower base is suspended on two bearings, allowing the complete tower to yaw. The nacelle is fixed to the tower top.
+	\item The blades are made from PVC foam, optionally reinforced with glass fibre sandwich beam. Various rotor configurations have been considered (but all share the same pitch and chord distribution):
+	\begin{itemize}
+		\item Relatively stiff blades (heavy glass fibre sandwich core beam), strain gauges (flap only)
+		\item Not so stiff blades (light glass fibre sandwich core beam), strain gauges (flap only)
+		\item Somewhat flexible blades (no sandwich core beam)
+		\item Somewhat flexible blades, swept planform (no sandwich core beam)
+	\end{itemize}
+	\item In free yawing mode the yaw angle range is approximately -35 to 35 degrees. The yaw angle can be locked or manually controlled in free yaw mode from the control room using simple ropes.
+	\item The generator is connected to a variable electrical load (resistance) for limited torque variability (no active rotor speed control). The resistance magnitude is varied using pulse width modulation.
+	\item Electrical power measurement, but including various other unknown electrical losses.
+	\item Rotor speed and azimuth angle measurement device.
+	\item Strain gauges on the tower base in for-aft and side-side directions.
+	\item Strain gauges signals on two blades are transmitted wireless to acquisition pc, synchronisation is done using a shared reference signal with wired DAQ system.
+	\item 3D-accelerometer at the tower top.
+	\item Rotor speed and azimuth angle measuring device.
+	\item Laser distance meter to measure the yaw angle.
+	\item Wind speed, temperature and static pressure measurements were taken from the  OJF measurement system.
+\end{itemize}
+
+Some of the shortcomings of the experiment are:
+
+\begin{itemize}
+	\item Reliable measurement of the mechanical shaft power is missing.
+	\item No yaw moment measurement device.
+	\item Blade flap-wise strain gauge measurements are not reliable and significantly affected by centrifugal forces.
+	\item Mass imbalances, especially for the relatively stiff and not so stiff blades.
+	\item Not so accurate pitch settings ($\pm 1$ deg), small pitch and cone angle imbalance.
+	\item Low quality rotor speed measurements during the February campaign.
+	\item Lower torque range during February campaign, lacking performance characteristics of the generator.
+	\item No accurate aerodynamic performance characteristics of the rotor (3D-correct lift, drag and moment coefficients).
+\end{itemize}
+
+However, the most important shortcoming, lacking shaft torque/power measurement, can be compensated by considering the torque-rpm-power sheet provided by the generator manufacturer, and is discussed in more detail in the following sections.
+
+
+% =================================================================================
 \section{Measurement Results}
 
 Due to the absence of accurate torque and yaw moment measurements, the influence of yawed inflow conditions has to be considered by looking at proxies. The tower base for-aft bending moment is a reliable measurement that can be used to look at the effect of misaligned flow on the rotor thrust. The rotor speed can serve as a proxy for the torque since the generator used is a direct drive permanent magnet generator without any active control, and has a near linear relationship between torque and rotor speed (\cite{verelst_numerical_2013:diss}, page 100).
 
-An overall overview of the test cases can be obtained by considering figures \ref{ct-vs-lambda} and \ref{ct-vs-yawerror}. From figure \ref{ct-vs-lambda} the two operating modes of the turbine can be shown: low tip speed ratio's when the rotor is operating in deep stall, and higher tip speed ratio's (around the design point) in attached flow regimes. The influence of yaw inflow angle on the rotor thrust is given for different tip speed ratio's in figure \ref{ct-vs-yawerror}, and confirms the $cos^2 \psi$ (with $\psi$ being the yaw error) relationship between thrust and yaw angle that has been reported in other experiments.
+\subsection{Overview}
+
+An overall overview of the test cases can be obtained by considering figures \ref{rpm-vs-wind} and \ref{ct-vs-lambda}. From figure \ref{rpm-vs-wind} the two operating modes of the turbine are clearly illustrated: low tip speed ratio's when the rotor is operating in deep stall, and higher tip speed ratio's (around the design point) in attached flow regimes. 
 
 \begin{figure}[h]
 \begin{minipage}{17pc}
-\includegraphics[width=17pc]{figures/symlinks_all_psicor-ct-vs-lambda-april.eps}
-\caption{\label{ct-vs-lambda}Thrust coefficients as function of tip speed ratio in aligned flow for various wind speeds.}
+\vspace{10px}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-rpm-vs-wind-dc-all}
+\caption{\label{rpm-vs-wind} Rotor speed as function of wind speed in aligned flow for various generator load settings (dc). Dotted lines indicate tip speed ratio's.}
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{17pc}
-\includegraphics[width=17pc]{figures/symlinks_all_psicor-yawerror-vs-ct-april.eps}
-\caption{\label{ct-vs-yawerror} Thrust coefficients in yawed flow. Lines are proportional to $cos^2 \psi$}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-ct-vs-lambda-april-blades-straight}
+\caption{\label{ct-vs-lambda} Thrust coefficients as function of tip speed ratio in aligned flow for various wind speeds.}
 \end{minipage} 
 \end{figure}
 
-The full paper will extend the analysis by considering rotor speed as a proxy for rotor torque in both aligned and misaligned flow.
 
-%Alternatively, when only considering wind and rotor speeds we can also include the measurements for which no reliable tower base bending moments are available:
+The influence of yaw inflow angle on the rotor thrust is given for different tip speed ratio's in figures \ref{ct-vs-yawerror-straight} and \ref{ct-vs-yawerror-swept} for the straight and swept blades respectively. The full lines indicated in both figures show that there is a $cos^2 \psi$ (with $\psi$ being the yaw error) relationship between thrust and yaw angle, which has been reported in other experiments too. Further, a small skew in figures \ref{ct-vs-yawerror-straight} and \ref{ct-vs-yawerror-swept} is noted: the thrust coefficient has a slight asymmetry. For negative yaw errors the $C_T$ is slightly higher compared to positive ones. Although there are less data points available for the swept blade, these results indicate they perform similar.
 
-%\begin{figure}[h]
-%\begin{minipage}{17pc}
-%\includegraphics[width=17pc]{figures/symlinks_all_psicor-rpm-vs-wind-dc0-dc1.eps}
-%\caption{\label{rpm-vs-wind-dc0-cd1}Figure caption for first of two sided figures.}
-%\end{minipage}\hspace{2pc}%
-%\begin{minipage}{17pc}
-%\includegraphics[width=17pc]{figures/symlinks_all_psicor-rpm-vs-wind-dc-all.eps}
-%\caption{\label{rpm-vs-wind-dcall}Figure caption for second of two sided figures.}
-%\end{minipage} 
-%\end{figure}
+%TODO make sure the cos2 lines are the same for both straight and swept blade plots
+
+\begin{figure}[h]
+\begin{minipage}{17pc}
+%\vspace{10px}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-yawerror-vs-ct-april-straight-blades}
+\caption{\label{ct-vs-yawerror-straight} Thrust coefficients as function of yaw angle for various tip seed ratio's and straight blades. Lines are proportional to $cos^2 \psi$.}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-yawerror-vs-ct-april-swept-blades}
+\caption{\label{ct-vs-yawerror-swept} Thrust coefficients as function of yaw angle for various tip seed ratio's and swept blades. Lines are proportional to $cos^2 \psi$.}
+\end{minipage} 
+\end{figure}
 
 
-For the free yawing tests, the turbine was forced into a yaw error and released again after reaching steady rotor speed conditions. An example of such a result is given in figure \ref{freeyaw-flex-vs-samo}: the rotor speed and yaw inflow angle are given for two different blade planform layouts: straight and swept (but with the same pitch, chord and airfoil distributions). The full paper will include the results of more free yaw decay tests and corresponding analysis.
+% -------------------------------------------------------------------------------
+\subsection{Estimating Rotor Mechanical Power}
+
+The mechanical and electrical performance of the generator has been documented by the manufacturer in the form of a rotor speed vs input torque, electrical current and voltage, and is given for a range of generator load resistance values. Although the effective generator load resistance was not determined accurately for the experimental setup, an estimate is available. Based on this data set, the generator electrical efficiency, mechanical torque and electrical power can be estimated. Using the rotor speed measurement of the experiment, this data can now also be used to estimate the rotor mechanical power and the generator electrical power. Note that due to a limited range of rotor speed data points in the generator measurement sheet provided by the manufacturer, not all wind tunnel measurement points have a corresponding estimated mechanical/electrical power value.
+
+A comparison between the measured electrical power and the estimated electrical generator power (based on manufacturer data sheet) is given in figures \ref{pe-meas-vs-lambda} and \ref{pe-rpm2torque-vs-lambda} respectively. Both the measurement and the estimated values correspond in order of magnitude. Note that the measured electrical power (figure \ref{pe-meas-vs-dc} has a sharp peak. It is argued this is caused by the significant losses in the wiring and the pulse width modulation system for various load settings. This is illustrated in figure \ref{pe-meas-vs-dc} by considering the electrical measured power as function of the generator dump load setting driven by the pulse width modulator. A significant decrease in electrical power being dissipated in the dump load can be noted when the duty cycle approaches 1 (and generally the TSR is decreased). When considering the estimated electrical generator power in figure \ref{pe-rpm2torque-vs-dc}, a similar decrease towards a duty cycle value of 1 is noted, but not as significant. This indicates the electrical losses in the system after the generator are significant.
+
+\begin{figure}[h]
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-pe-meas-vs-lambda-april-blades-straight.eps}
+\caption{\label{pe-meas-vs-lambda} Measured electrical power as function of tip speed ratio in aligned flow for various wind speeds.}
+\vspace{10px}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-pe-rpm2torque-vs-lambda-april-blades-straight.eps}
+\caption{\label{pe-rpm2torque-vs-lambda} Generator electrical power based on RPM-torque data provided by manufacturer, using estimate for resistance value of dump load.}
+\end{minipage} 
+\end{figure}
+
+
+\begin{figure}[h]
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-pe-measured-vs-dc-all.eps}
+\caption{\label{pe-meas-vs-dc} Measured electrical power as function generator dump load resistance magnitude.}
+\vspace{10px}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-pe-rpm2torque-vs-dc-all.eps}
+\caption{\label{pe-rpm2torque-vs-dc} Generator electrical power (based on RPM-torque estimates) as function generator dump load magnitude.}
+\end{minipage} 
+\end{figure}
+
+
+Assuming that these estimate generator characteristics are somewhat sensible, the rotor power coefficient $C_P$ (based on the estimated mechanical power) can be considered as function of TSR and yaw error in figures \ref{cp-rpm2torque-vs-lambda-straight} and \ref{cp-rpm2torque-vs-yawerror-straight}.
+
+
+\begin{figure}[h]
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-cp-rpm2torque-vs-lambda-april-blades-straight}
+\caption{\label{cp-rpm2torque-vs-lambda-straight} Estimated power coefficients as function of tip speed ratio in aligned flow for various wind speeds.}
+\vspace{10px}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{17pc}
+\includegraphics[width=17pc]{figures/overview/symlinks_all-yawerror-vs-cp-rpm2torque-april-straight-blades}
+\caption{\label{cp-rpm2torque-vs-yawerror-straight} Estimated power coefficients as function of yaw angle for various tip seed ratio's and straight blades. Lines are proportional to $cos^2 \psi$.}
+\end{minipage} 
+\end{figure}
+
+
+% -------------------------------------------------------------------------------
+\subsection{Free yaw response}
+
+For the free yawing tests, the turbine was forced into a yaw error and released again after reaching steady rotor speed conditions. An example of such a result is given in figure \ref{freeyaw-flex-vs-samo}: the rotor speed and yaw inflow angle are given for two different blade planform layouts: straight and swept (but with the same pitch, chord and airfoil distributions). It is interesting to note that the yaw response is either under- or critically-damped. The rotor speed response is always critically- or over-damped. The largest contributing factor for the type of yaw response (critically- or under-damped) depends on the operating tip speed ratio, initial yaw error (both magnitude and sign).
 
 \begin{figure}[h]
 \centering
@@ -117,18 +210,86 @@ For the free yawing tests, the turbine was forced into a yaw error and released 
 \end{minipage} 
 \end{figure}
 
+A series of these free yaw response experiments was recorded at various wind and rotor speeds, but using approximately the same initial yaw error. The respective rotor speed and yaw angle time traces are given in figures \ref{allfreeyaw-respons-rpm} and \ref{allfreeyaw-respons-yaw}. In the figures we have:
+\begin{itemize}
+	\item red for positive initial yaw errors
+	\item blue for negative initial yaw errors
+	\item triangles refer to the swept blades
+	\item lines refer to straight blades
+	\item figure \ref{allfreeyaw-respons-yaw} has a reversed left y-axis (yaw)
+\end{itemize}
 
+Figure \ref{allfreeyaw-respons-rpm} visualizes the range of rotor speeds, and the differences between the initial rotor speed under yaw error, and later under free yawing conditions (but close to zero yaw angle). When normalizing the rotor speed responses (see figure \ref{allfreeyaw-respons-rpm-norm}) a similar response pattern is observed. 
+
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=25pc]{figures/freeyaw/allfreeyaw_rpm.eps}
+\caption{\label{allfreeyaw-respons-rpm} Free yaw response: rotor speed [rpm]. Red marks positive initial yaw errors, blue negative. Series indicated with a triangle refer to the swept blades, lines to straight blades.}
+\end{minipage}
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=25pc]{figures/freeyaw/allfreeyaw_yaw_angle.eps}
+\caption{\label{allfreeyaw-respons-yaw} Free yaw response: yaw angle [deg]. Red marks positive initial yaw errors, blue negative. Series indicated with a triangle refer to the swept blades, lines to straight blades. Left y-axis is reversed compared to right y-axis.}
+\end{minipage} 
+\end{figure}
+
+When considering the yaw angle response the following observations are made:
+
+\begin{itemize}
+	\item The steady state angle is not exactly zero, and depends on the initial yaw error.
+	\item Negative initial yaw errors result in a marginally higher steady state yaw angle
+	\item Yaw stiffness for negative yaw errors seems to be lower compared to positive ones. This is more clearly visualized in figure \ref{allfreeyaw-respons-yaw-norm} when considering the normalized yaw angle response.
+	\item Only positive yaw errors demonstrate an under-damped response for some cases.
+	\item The swept blade performs similar compared to the straight one, although it seems to indicates a modest increased yaw stiffness. However, this should be investigated further in more detail before forming a more conclusive opinion.
+\end{itemize}
+
+
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=25pc]{figures/freeyaw/allfreeyaw_rpm_norm.eps}
+\caption{\label{allfreeyaw-respons-rpm-norm} Normalized free yaw response: rotor speed.}
+\end{minipage}
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=25pc]{figures/freeyaw/allfreeyaw_yaw_angle_norm.eps}
+\caption{\label{allfreeyaw-respons-yaw-norm} Normalized free yaw response: yaw angle.}
+\end{minipage} 
+\end{figure}
+
+% =================================================================================
 \section{Open Access Measurement Data}
 
-The main access point to this dataset is placed in a git version control repository on the Github hosting platform (free of charge for publicly accessible repositories). This repository \cite{github:freeyaw-ojf-wt-tests} contains the documentation and all the Python post-processing scripts that have been used to calibrate and correct the raw measurement data into a usable coherent dataset.
+The main access point to this dataset is placed in a git version control repository on the Github hosting platform (free of charge for publicly accessible repositories). This repository \cite{github:freeyaw-ojf-wt-tests} contains the documentation and all the Python post-processing scripts that have been used to calibrate and correct the raw measurement data into a usable coherent dataset. Additionally, a website is provided listing all the measurements with a corresponding dashboard plot of the relevant channels.
+
+This paper only presents a small part of the generated results, and the interested reader is referred to the website for more results. Further, the author intends to continue analysing the dataset and make the results available on the website on an ad-hoc basis.
 
 The measurement data itself is too large for it to be practically integrated in a git repository on Github. Instead, the Danish e-infrastructure cooperation (DeiC) \cite{deic:datamanagement} is used to host the approximate 14 GB dataset. Alternative hosting platforms for large research datasets are Zenodo \cite{zenodo} and OSF.io \cite{osf}. 
 
 Making datasets like this publicly available including documentation and instructions to reproduce (parts) of the analysis is not often considered due to various reasons. It is a significant additional effort to sanitize the data and post-processing scripts in order to make it publicly available. This is necessary though if the data is mend to be useful for other users or researchers. %Considering that creating and post-processing experimental datasets like these represent a considerable effort, it is worthwhile to also share the data with as many other researchers as possible.
 
 %Since creating and post-processing experimental data is 
-%\section{Conclusions}
 
+% =================================================================================
+\section{Future Work, Recommendations Future Experiments}
+
+Some of the drawbacks of this experiment, such as missing accurate aerodynamic performance characteristics of the rotor (lift, drag and moment coefficients), can be mitigated by considering a large number of operating conditions. For example, in \cite{bottasso_calibration_2014} the aerodynamic rotor characteristics are determined based on a large number of measurements with varying tip speed ratio's and blade pitch angles. This requires careful planning of the experiment upfront the measurement campaign. 
+
+Fixed rotor speed control is essential when trying to cover a broad range of operating conditions. In doing so, it would be possible to test a larger range of tip speed ratio's at various yawed inflow angles, and ideally also at various blade pitch angle settings.
+
+When using a simple direct drive generator without active control, the outcome of the experiment would benefit from its accurate characterisation. Not only the torque-rpm-electrical power characteristics, but also the performance under various electrical loads, and the dynamic response.
+
+Finally, the yaw stability could be studied in more detail if a combination of various free yaw responses is combined with fixed yaw moment measurements, and a quantification of the yaw bearing friction moment.
+
+% =================================================================================
+\section{Conclusions}
+
+This paper presented a short overview of some of the key results of a wind tunnel campaign of a free yawing downwind rotor. Thrust and estimated power coefficients at various tip speed ratio's have been presented for various yaw angles. In yawed inflow conditions, both estimated power and thrust are proportional to $cos^2 \Psi $. In free yaw the turbine operates in a stable fashion, and the system has a critically-damped response when released from a larger (30-25 degrees) yaw error.
+
+
+
+% =================================================================================
 \section*{References}
 
 \begingroup
