@@ -67,23 +67,25 @@ An alternative application of a good understanding of wind turbine performance a
 The experiment consisted out of two campaigns: the first took place during February of 2012, and the second two months later in April 2012. A comprehensive discussion of the design of the experimental setup and measurement sensors are given in sections 4.4, 4.5 and 5.2 of \cite{verelst_numerical_2013:diss}. What follows is a brief overview:
 
 \begin{itemize}
+	\item Rotor aerodynamic design: 280 W at 450 RPM and 11.4 m/s, $C_{P_{opt}}=0.36$ at TSR=6.
+	\item Blade tip radius: 1.60m, blade root radius : 0.245m.
 	\item The tower base is suspended on two bearings, allowing the complete tower to yaw. The nacelle is fixed to the tower top.
-	\item The blades are made from PVC foam, optionally reinforced with glass fibre sandwich beam. Various rotor configurations have been considered (but all share the same pitch and chord distribution):
+	\item The blades are made from PVC foam, optionally reinforced with glass fibre sandwich beam. Various rotor configurations have been considered (but all share the same arfoils, and twist, chord length, and airfoil thickness distributions):
 	\begin{itemize}
-		\item Relatively stiff blades (heavy glass fibre sandwich core beam), strain gauges (flap only)
-		\item Not so stiff blades (light glass fibre sandwich core beam), strain gauges (flap only)
-		\item Somewhat flexible blades (no sandwich core beam)
-		\item Somewhat flexible blades, swept planform (no sandwich core beam)
+		\item Blade set A "stiff": 8-layered glass fibre sandwich core beam, strain gauges in flapwise direction (glued on core beam)
+		\item Blade set B "flexible": 2-layered glass fibre sandwich core beam, strain gauges in flapwise direction (glued on core beam)
+		\item Blade set C "flexible-no-beam": only PVC foam and no strain gauges
+		\item Blade set D "flexible-no-beam-sweep": swept planform, only PVC foam and no strain gauges
 	\end{itemize}
 	\item In free yawing mode the yaw angle range is approximately -35 to 35 degrees. The yaw angle can be locked or manually controlled in free yaw mode from the control room using simple ropes.
 	\item The generator is connected to a large and a small dump load (resistance) for limited torque variability (no active rotor speed control). The effective dump load magnitude is controlled by fast switching between these two loads using pulse width modulation.
-	\item Electrical power measurement, but including various other unknown electrical losses.
+	\item Electrical power dissipated in the dump load.
 	\item Rotor speed and azimuth angle measurement device.
 	\item Strain gauges on the tower base in for-aft and side-side directions.
-	\item Strain gauges signals on two blades are transmitted wireless to acquisition pc, synchronisation is done using a shared reference signal with wired DAQ system.
+	\item Strain gauges signals on two blades in flapwise direction.
 	\item 3D-accelerometer at the tower top.
-	\item Rotor speed and azimuth angle measuring device.
 	\item Laser distance meter to measure the yaw angle.
+	\item 2 data acquisition systems (DAQ) for data recording: blade strain gauges are connected to a wireless DAQ, all other channels connected to a wired DAQ. A shared reference signal on both the wired and wireless DAQ system is used to synchronise both
 	\item Wind speed, temperature and static pressure measurements were taken from the  OJF measurement system.
 \end{itemize}
 
@@ -122,7 +124,7 @@ An overall overview of the test cases can be obtained by considering figures \re
 \end{figure}
 
 
-The influence of yaw inflow angle on the rotor thrust is given for different tip speed ratio's in figures \ref{ct-vs-yawerror-straight} and \ref{ct-vs-yawerror-swept} for the straight and swept blades respectively. The full lines indicated in both figures show that there is a $cos^2 \psi$ (with $\psi$ being the yaw error) relationship between thrust and yaw angle, which has been reported in other experiments too. Further, a small skew in figures \ref{ct-vs-yawerror-straight} and \ref{ct-vs-yawerror-swept} is noted: the thrust coefficient has a slight asymmetry. For negative yaw errors the $C_T$ is slightly higher compared to positive ones. Although there are less data points available for the swept blade, these results indicate they perform similar.
+The influence of yaw inflow angle on the rotor thrust is given for different tip speed ratio's in figures \ref{ct-vs-yawerror-straight} and \ref{ct-vs-yawerror-swept} for the straight and swept blades respectively. The dash line indicated in both figures show that there is a $cos^2 \psi$ (with $\psi$ being the yaw error) relationship between thrust and yaw angle, which has been reported in other experiments too. Further, a small skew in figures \ref{ct-vs-yawerror-straight} and \ref{ct-vs-yawerror-swept} is noted: the thrust coefficient has a slight asymmetry. For negative yaw errors the $C_T$ is slightly higher compared to positive ones. Although there are less data points available for the swept blade, these results indicate they perform similar.
 
 %TODO make sure the cos2 lines are the same for both straight and swept blade plots
 
@@ -130,11 +132,11 @@ The influence of yaw inflow angle on the rotor thrust is given for different tip
 \begin{minipage}{17pc}
 %\vspace{10px}
 \includegraphics[width=17pc]{figures/overview/symlinks_all-yawerror-vs-ct-april-straight-blades}
-\caption{\label{ct-vs-yawerror-straight} Thrust coefficients as function of yaw angle for various tip seed ratio's and straight blades. Lines are proportional to $cos^2 \psi$.}
+\caption{\label{ct-vs-yawerror-straight} Thrust coefficients as function of yaw angle for various tip speed ratio's and straight blades. Lines are proportional to $cos^2 \psi$.}
 \end{minipage}\hspace{3pc}%
 \begin{minipage}{17pc}
 \includegraphics[width=17pc]{figures/overview/symlinks_all-yawerror-vs-ct-april-swept-blades}
-\caption{\label{ct-vs-yawerror-swept} Thrust coefficients as function of yaw angle for various tip seed ratio's and swept blades. Lines are proportional to $cos^2 \psi$.}
+\caption{\label{ct-vs-yawerror-swept} Thrust coefficients as function of yaw angle for various tip speed ratio's and swept blades. Lines are proportional to $cos^2 \psi$.}
 \end{minipage} 
 \end{figure}
 
@@ -142,7 +144,7 @@ The influence of yaw inflow angle on the rotor thrust is given for different tip
 % -------------------------------------------------------------------------------
 \subsection{Estimating Rotor Mechanical Power}
 
-The mechanical and electrical performance of the generator has been documented by the manufacturer in the form of a rotor speed vs input torque, electrical current and voltage, and is given for a range of generator load resistance values (see figure \ref{rpm2torque-windbluepower}). It has a near linear relationship between torque and rotor speed. Although the effective generator load resistance was not determined accurately for the experimental setup, an estimate is available. Based on this data set, the generator electrical efficiency, mechanical torque and electrical power can be estimated. Using the rotor speed measurement of the experiment, this data can now also be used to estimate the rotor mechanical power and the generator electrical power. Note that due to a limited range of rotor speed data points in the generator measurement sheet provided by the manufacturer, not all wind tunnel measurement points have a corresponding estimated mechanical/electrical power value.
+The mechanical and electrical performance of the generator have been documented by the manufacturer in the form of a rotor speed vs input torque, electrical current and voltage, and are given for a range of generator load resistance values (see figure \ref{rpm2torque-windbluepower}). It has a near linear relationship between torque and rotor speed. Although the effective generator load resistance was not determined accurately for the experimental setup, an estimate is available. Based on this data set, the generator electrical efficiency, mechanical torque and electrical power can be estimated. Using the rotor speed measurement of the experiment, this data can now also be used to estimate the rotor mechanical power and the generator electrical power. Note that due to a limited range of rotor speed data points in the generator measurement sheet provided by the manufacturer, not all wind tunnel measurement points have a corresponding estimated mechanical/electrical power value.
 
 \begin{figure}[h]
 \centering
@@ -193,7 +195,7 @@ Assuming that these estimate generator characteristics are somewhat sensible, th
 \end{minipage}\hspace{3pc}%
 \begin{minipage}{17pc}
 \includegraphics[width=17pc]{figures/overview/symlinks_all-yawerror-vs-cp-rpm2torque-april-straight-blades}
-\caption{\label{cp-rpm2torque-vs-yawerror-straight} Estimated power coefficients as function of yaw angle for various tip seed ratio's and straight blades. Lines are proportional to $cos^2 \psi$.}
+\caption{\label{cp-rpm2torque-vs-yawerror-straight} Estimated power coefficients as function of yaw angle for various tip speed ratio's and straight blades. Lines are proportional to $cos^2 \psi$.}
 \end{minipage} 
 \end{figure}
 
@@ -201,7 +203,7 @@ Assuming that these estimate generator characteristics are somewhat sensible, th
 % -------------------------------------------------------------------------------
 \subsection{Free yaw response}
 
-For the free yawing tests, the turbine was forced into a yaw error and released again after reaching steady rotor speed conditions. An example of such a result is given in figure \ref{freeyaw-flex-vs-samo}: the rotor speed and yaw inflow angle are given for two different blade planform layouts: straight and swept (but with the same pitch, chord and airfoil distributions). It is interesting to note that the yaw response is either under- or critically-damped. The rotor speed response is always critically- or over-damped. The largest contributing factor for the type of yaw response (critically- or under-damped) depends on the operating tip speed ratio, initial yaw error (both magnitude and sign).
+For the free yawing tests, the turbine was forced into a yaw error and released again after reaching steady rotor speed conditions. An example of such a result is given in figure \ref{freeyaw-flex-vs-samo}: the rotor speed and yaw inflow angle are given for two different blade planform layouts: straight and swept (but with the same twist, chord and airfoil distributions). It is interesting to note that the yaw response is either under- or critically-damped. The rotor speed response is always critically- or over-damped. The largest contributing factor for the type of yaw response (critically- or under-damped) depends on the operating tip speed ratio, initial yaw error (both magnitude and sign).
 
 \begin{figure}[h]
 \centering
@@ -217,7 +219,7 @@ For the free yawing tests, the turbine was forced into a yaw error and released 
 \end{minipage} 
 \end{figure}
 
-A series of these free yaw response experiments was recorded at various wind and rotor speeds, but using approximately the same initial yaw error. The respective rotor speed and yaw angle time traces are given in figures \ref{allfreeyaw-respons-rpm} and \ref{allfreeyaw-respons-yaw}. In the figures we have:
+A series of these free yaw response experiments were recorded at various wind and rotor speeds, but using approximately the same initial yaw error. The respective rotor speed and yaw angle time traces are given in figures \ref{allfreeyaw-respons-rpm} and \ref{allfreeyaw-respons-yaw}. In the figures we have:
 \begin{itemize}
 	\item red for positive initial yaw errors
 	\item blue for negative initial yaw errors
