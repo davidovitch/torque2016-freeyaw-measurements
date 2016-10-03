@@ -1,0 +1,432 @@
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+\usepackage[multidot]{grffile}   % Unusual file names support.
+
+% Latin Modern
+\usepackage{lmodern}
+% Verdana font type
+%\usepackage{verdana}
+% Helvetica
+%\usepackage{helvet}
+% Times (text and math)
+%\usepackage{newtx, newtxmath}
+
+\usepackage{pgfpages} % only works with pdflatex?
+%\pgfpagesuselayout{4 on 1}[a4paper,border shrink=5mm,landscape]
+\usepackage{array}
+\usepackage[multidot]{grffile} % Unusual file names support.
+% Symbols, notation, and math
+\usepackage{amssymb,amsmath} % mathematics
+\usepackage{mathtools} % tweaks to the amsmath package
+\usepackage{textcomp} % trademark symbol
+\usepackage{eurosym} % for the euro
+\usepackage{multirow} % multi column and row for tables
+
+\usepackage{color}
+\definecolor{dark-red}{rgb}{0.4,0.15,0.15}
+\definecolor{dark-blue}{rgb}{0.15,0.15,0.4}
+\definecolor{medium-blue}{rgb}{0,0,0.5}
+\definecolor{grey}{rgb}{128,128,128}
+\usepackage[bookmarks=true]{hyperref}
+\hypersetup{
+  pdfauthor={David R.S. Verelst},
+  pdftitle={pdftitle},
+  pdfsubject={pdfsubject},
+  colorlinks, linkcolor={dark-red},
+  citecolor={dark-blue}, urlcolor={medium-blue}
+}
+
+\bibliographystyle{iopart-num}
+
+\usetheme[department=vindenergi, language=english, vcenter=true, placetitle=header, showsection=false]{DTU}
+
+
+% reset the labels for itemize
+%\setbeamertemplate{itemize item}{$\bullet$}
+%\setbeamertemplate{itemize subitem}{$\circ$}
+%\setbeamertemplate{itemize subsubitem}{$-$}
+%Amongst the more commonly used ones are $\bullet$ (\bullet), $\cdot$ (\cdot), $\diamond$ (\diamond), $-$ (-), $\ast$ (\ast) and $\circ$ (\circ).
+
+\setbeamerfont{itemize/enumerate body}{size=\small}
+\setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
+%\setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\tiny}
+
+\setbeamerfont{tabular body}{size=\small}
+\setbeamerfont{tabular title}{size=\small}
+\setbeamerfont{tabular row}{size=\small}
+\setbeamerfont{table body}{size=\small}
+\setbeamerfont{table title}{size=\small}
+
+
+\title{Open Access Wind Tunnel Measurements of a Downwind Free Yawing Wind Turbine}
+\author{David R. S. Verelst}
+
+\author{\textsuperscript{1} David Verelst, \textsuperscript{1} Torben Larsen and \textsuperscript{2} Jan-Willem van Wingerden}
+
+\institute{\textsuperscript{1} DTU Wind Energy - Loads and Control \\ \textsuperscript{2} TU Delft - Delft Center for Systems and Control}
+
+\date{\today}
+
+
+\newcommand{\tabitem}{{\color{dtured}$\bullet$} }
+
+\begin{document}
+
+\frame{
+	\maketitle
+}
+
+\frame{
+	\frametitle{Outline}
+	\begin{itemize}
+		\item Short overview of the experimental setup
+		\item Limitations
+		\item Results: thrust and estimated power coefficients
+		\item Results: free yaw response
+		\item Conclusions and future work recommendations
+	\end{itemize}
+}
+
+
+% =============================================================
+\frame{
+\frametitle{The TU Delft Open Jet Facility}
+%\subsection{The TU Delft Open Jet Facility}
+
+\begin{itemize}
+\item Wind speeds: 3 - 35 m/s (wind force 11, 70 knots)
+\item 500 kW fan
+\item 2.8m by 2.8m exit nozzle
+\end{itemize}
+
+\begin{figure}[!bthp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/ojf_3d_schematics.jpg}
+\label{fig_ojf_schematic}
+%\caption{Schematic overview of TU Delft OJF wind tunnel.}
+\end{figure}
+
+}
+
+% =============================================================
+\frame{
+	\frametitle{Turbine Dimensions}
+
+	\begin{itemize}
+	\item Theoretical rotor aerodynamic performance (ignoring flexibility):
+	\begin{itemize}
+		\item 280 W at 450 RPM and 11.4 m/s
+		\item $C_{P_{max}}=0.36$ at TSR=6 (tip speed ratio)
+	\end{itemize}
+	\item Rotor diameter: 1.60m
+	\item Blade root radius: 0.245m
+	\item Blade length: 0.555m
+	\item Tower length: $\approx$ 2m
+	\end{itemize}
+	
+	\begin{figure}[!h]
+	\centering
+	\graphicspath{{/home/dave/PhD/Projects/OJF/pictures/selection/}}
+	\includegraphics[width=1.00\textwidth]{figures/DSC01322_titlepage_invert_color}
+	\end{figure}
+}
+
+% =============================================================
+\frame{
+	\frametitle{Blade Aerodynamic Design}
+	
+	\begin{figure}[h]
+	\begin{minipage}{\textwidth}
+	\includegraphics[width=0.49\textwidth]{figures/model/aero-blade-layout-hawtopt_blade.dat.eps}
+	%\caption{\label{rotor-aero-design} Rotor aerodynamic design.}
+%	\end{minipage}\hspace{3pc}%
+%	\begin{minipage}{17pc}
+	\vspace{10px}
+	\includegraphics[width=0.49\textwidth]{figures/model/h2-blade-stiffness-flex-vs-stiff.eps}
+	%\caption{\label{h2-blade-stiffness} Estimated blade flapwise stiffness distribution.}
+	\end{minipage}
+	\end{figure}
+	
+	\begin{minipage}{\textwidth}
+	\begin{table}
+	\centering
+	\begin{tabular}{c c c c c c}
+	\hline
+	          & region & $t/c$ & $Re_{design}$ & $Re_{data}$ & $C_{L_{max}}$ \\
+	NREL S823 [14] & inboard  & $21\%$ & $4e5$      & $1e5$      & $1.184$ \\
+	NREL S822 [14] & outboard & $16\%$ & $6e5$      & $2e5$      & $1.100$ \\
+	\hline
+	\end{tabular}
+	\caption{Blade aerofoils and corresponding key parameters.}
+	\label{table:S822_S823_keyproperties}
+	\end{table}
+	
+	Aerodynamic characteristics are taken from the UIUC LSAT database [15].
+	
+	% \cite{somers_s822_2005}
+	% \cite{selig_summary_1996}
+	\end{minipage}
+
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Test Setup Overview}
+%\subsection{Test Setup Overview}
+
+\vspace{-10pt}
+
+\begin{table}[ht]
+\begin{tabular}{l l}
+
+	\begin{minipage}[b]{0.35\linewidth}
+	\begin{itemize}
+%    	\item Blade tip trajectory (HS camera)
+        \item Accelerometer tower top
+        \item Wired data acquisition
+		\item Free yawing (tower base), control with wire
+		\item PM generator, no active torque control
+%		\item Limited generator torque control (no active tracking of rotor speed)
+		\item Blades made from injected PVC foam, internal glass fibre sandwich stiffener
+    	\item Rotor speed measurements
+		\item Tower base strain FA, SS
+		\item Blade strain (flapwise), wireless data acquisition
+		\item Yaw angle (laser distance)
+	\end{itemize}
+	\end{minipage}
+
+&
+	\begin{minipage}[b]{0.60\linewidth}
+	    \vspace{-20pt}
+		\includegraphics[width=\linewidth]{figures/DSC01314_edit}
+	\end{minipage}
+
+\end{tabular}
+\end{table}
+
+}
+
+% =============================================================
+\frame{
+\frametitle{Tower Support Structure}
+%\subsection{Tower Support Structure}
+
+\begin{figure}[!bthp]
+	\centering
+	\graphicspath{{figures/}}
+	\includegraphics[width=0.60\linewidth]{DSC_2299_small}
+%	\caption{Tower support structure with free yaw bearings at the base}
+%	\label{pic:tower_support_structure}
+\end{figure}
+
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Limitations}
+
+\begin{itemize}
+	\item No active rotor speed control.
+	\item Limited generator torque range.
+	\item No accurate mechanical torque measurement.
+	\item No yaw moment measurement.
+	\item Blade flap-wise strain gauge measurements affected by centrifugal forces.
+%	\item Smaller blade deflections than aimed for due to higher than expected blade mass and PVC foam stiffness.
+	\item Rotor mass imbalance. %, especially for blade sets A "stiff" and B "flexible".
+	\item Not so accurate pitch settings ($\pm 1$ deg), small pitch and cone angle imbalance.
+%	\item The results from the February campaign are largely unusable due to corrupted tower strain calibration measurements, low quality rotor speed measurements, low generator torque range and lacking generator data sheet (generator was upgraded in April).
+	\item No accurate aerodynamic performance characteristics of the rotor (3D-corrected lift, drag and moment coefficients, blade root vortex).
+	\item Electrical losses in the system (generator, wiring, PWM, dump loads).
+\end{itemize}
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Results - Performance Overview}
+
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+\includegraphics[width=0.49\textwidth]{figures/overview/symlinks_all-rpm-vs-wind-dc-all}
+%\caption{\label{rpm-vs-wind} Rotor speed as function of wind speed in aligned flow for various generator load settings (dc). Dotted lines indicate tip speed ratios.}
+\includegraphics[width=0.49\textwidth]{figures/overview/symlinks_all-ct-vs-lambda-april-blades-straight}
+%\caption{\label{ct-vs-lambda} Thrust coefficients as function of tip speed ratio in aligned flow for various wind speeds.}
+\end{minipage} 
+\end{figure}
+
+}
+
+% =============================================================
+\frame{
+\frametitle{Results - Thrust Coefficients}
+
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+\includegraphics[width=0.49\textwidth]{figures/overview/symlinks_all-yawerror-vs-ct-april-straight-blades}
+%\caption{\label{ct-vs-yawerror-straight} Thrust coefficients as function of yaw angle for various tip speed ratios and straight blades (sets A and B). Dashed lines are proportional to $cos^2 \psi$ and are the same as in figure \ref{ct-vs-yawerror-swept} to facilitate visual inspection.}
+\includegraphics[width=0.49\textwidth]{figures/overview/symlinks_all-yawerror-vs-ct-april-swept-blades}
+%\caption{\label{ct-vs-yawerror-swept} Thrust coefficients as function of yaw angle for various tip speed ratios and swept blades (set D). Dashed lines are proportional to $cos^2 \psi$ and are the same as in figure \ref{ct-vs-yawerror-straight} to facilitate visual inspection.}
+\end{minipage} 
+\end{figure}
+%\vspace{10pt}
+{\small Positive yaw angle $\Psi$ means that the blade moving upwards is closer to the wind}
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Estimating Generator Torque}
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{figures/generator-st-540-contour}
+\caption{\label{rpm2torque-windbluepower-resistance} Measured applied torque and rotor speed for various electrical load settings (contour labels units are in Ohm). Based on measurements provided by the manufacturer (used with permission).}
+\end{minipage}
+\end{figure}
+
+}
+
+% =============================================================
+\frame{
+\frametitle{Results - Power Coefficients}
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+\includegraphics[width=0.49\textwidth]{figures/overview/symlinks_all-cp-rpm2torque-vs-lambda-april-blades-straight}
+%\caption{\label{cp-rpm2torque-vs-lambda-straight} Estimated power coefficients as function of tip speed ratio in aligned flow for various wind speeds. Blade sets A and B.}
+\includegraphics[width=0.49\textwidth]{figures/overview/symlinks_all-yawerror-vs-cp-rpm2torque-april-straight-blades}
+%\caption{\label{cp-rpm2torque-vs-yawerror-straight} Estimated power coefficients as function of yaw angle for various tip speed ratios and straight blades. Dashed lines are proportional to $cos^3 \psi$. Blade sets A and B.}
+\end{minipage} 
+\end{figure}
+{\small Positive yaw angle $\Psi$ means that the blade moving upwards is closer to the wind}
+}
+
+% =============================================================
+\frame{
+\frametitle{Results - Free Yaw Response}
+
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.93\textwidth]{figures/freeyaw/allfreeyaw_rpm.eps}
+%\caption{\label{allfreeyaw-respons-rpm} Free yaw response: rotor speed [rpm]. Red marks positive initial yaw errors, blue negative. Series indicated with a triangle refer to the swept blades, lines to straight blades.}
+\end{minipage}
+\vspace{-10pt}
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.93\textwidth]{figures/freeyaw/allfreeyaw_yaw_angle.eps}
+%\caption{\label{allfreeyaw-respons-yaw} Free yaw response: yaw angle [deg]. Red marks positive initial yaw errors, blue negative. Series indicated with a triangle refer to the swept blades, lines to straight blades. Left y-axis is reversed compared to right y-axis.}
+\end{minipage} 
+\end{figure}
+
+}
+
+% =============================================================
+\frame{
+\frametitle{Results - Normalized Free Yaw Response}
+
+\begin{figure}[h]
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.93\textwidth]{figures/freeyaw/allfreeyaw_rpm_norm.eps}
+%\caption{\label{allfreeyaw-respons-rpm-norm} Normalized free yaw response: rotor speed.}
+\end{minipage}
+\begin{minipage}{\textwidth}
+\centering
+\includegraphics[width=0.93\textwidth]{figures/freeyaw/allfreeyaw_yaw_angle_norm.eps}
+%\caption{\label{allfreeyaw-respons-yaw-norm} Normalized free yaw response: yaw angle.}
+\end{minipage} 
+\end{figure}
+
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Open Access Data and Sources}
+
+\begin{itemize}
+%	\item Front page: \url{https://github.com/davidovitch/freeyaw-ojf-wt-tests}
+	\item Documentation, Python post-processing calibration methods, plotting scripts, and representative aeroelastic beam model in HAWC2 input format: \url{https://github.com/davidovitch/freeyaw-ojf-wt-tests}
+	\item Measurement results (raw and calibrated), figures and plots of the results, pictures and video's of the experiment \url{https://data.deic.dk/shared/62ffdf2d57c8a0133a7f3a43671d0e23}
+	\item \LaTeX \ sources and figures for this paper and presentation \url{https://github.com/davidovitch/torque2016-freeyaw-measurements/}
+\end{itemize}
+
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Conclusions}
+
+\begin{itemize}
+	\item Measurements show a stable free-yawing 3-bladed downwind turbine.
+	\item Thrust and estimated power coefficients for various tip speed ratios and yaw angles are presented.
+	\begin{itemize}
+		\item Small thrust asymmetry wrt to yaw error.
+	\end{itemize}
+	\item Documenting and publishing data as open access is a significant effort
+\end{itemize}
+
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Future Work Recommendations}
+
+\begin{itemize}
+	\item Active rotor speed control in order to test a wider range of tip speed ratios
+	\item Accurate power/torque measurements
+	\item Accurate quantification of electrical losses in the system
+	\item Determine Generator dynamics
+	\item Yaw moment measurements
+	\item Calibrate sensors often ($>1$) and design "smart" calibration strategies
+	\item Aerodynamic model quantification: multiple operating points at various blade pitch angle settings (requires accurate and fast pitch angle setting mechanism)
+	\item Very flexible blades
+\end{itemize}
+
+}
+
+
+% =============================================================
+\frame{
+\frametitle{Questions}
+%\section{Wind Tunnel Experiments}
+
+\begin{figure}[!h]
+\centering
+\graphicspath{{/home/dave/PhD/Projects/OJF/pictures/selection/}}
+\includegraphics[width=1.00\textwidth]{DSC01322_titlepage_invert_color}
+\end{figure}
+
+}
+
+
+% =============================================================
+%\section{Blocks}
+%\frame{
+%	\frametitle{Blocks}
+%	\begin{block}{Cool block}
+%		Get nice visual effects by organizing content into \textbf{blocks}. Title background color matches the red from DTU logo.
+%	\end{block}
+%}
+
+%\frame{
+%	\frametitle{References}
+%	\bibliography{bibliography-iopart-num}
+%}
+
+\end{document}
